@@ -1,4 +1,4 @@
-package com.unlockchecker.unlockchecker;
+package com.unlockchecker.unlockchecker.helper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.unlockchecker.unlockchecker.Configuration;
 import com.unlockchecker.unlockchecker.model.Session;
 
 import java.lang.reflect.Type;

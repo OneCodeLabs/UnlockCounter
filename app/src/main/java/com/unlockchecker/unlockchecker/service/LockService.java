@@ -1,4 +1,4 @@
-package com.unlockchecker.unlockchecker;
+package com.unlockchecker.unlockchecker.service;
 
 import android.app.KeyguardManager;
 import android.app.Service;
@@ -9,12 +9,15 @@ import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.unlockchecker.unlockchecker.helper.DBHelper;
+import com.unlockchecker.unlockchecker.receiver.ScreenOffReceiver;
+
 public class LockService extends Service {
 
     private static final String LOCK_SERVICE_TEST = "LOCK_SERVICE_TEST";
 
-    DBHelper dbHelper;
-    BroadcastReceiver mReceiver;
+    private DBHelper dbHelper;
+    private BroadcastReceiver mReceiver;
     private int sessions;
     private long lastUnlock;
 
