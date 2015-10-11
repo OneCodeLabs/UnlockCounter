@@ -1,8 +1,5 @@
 package com.unlockchecker.unlockchecker;
 
-/**
- * Created by pepo on 11/10/2015.
- */
 public class Configuration {
-    public static final String SHARED_PREFERENCES = "LOCK_CHECKER_SHARED_PREFERENCES";
+    public static final String SHARED_PREFERENCES = "UNLOCK_COUNTER_SHARED_PREFERENCES";
 }

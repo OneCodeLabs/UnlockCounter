@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:name=".App"
+        android:name=".UnlockCounterApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light" >
@@ -19,13 +19,13 @@
         </activity>
 
         <service
-            android:name=".service.LockService"
+            android:name=".service.UnlockCounterService"
             android:enabled="true"
             android:exported="true" >
         </service>
 
         <receiver
-            android:name="receiver.ScreenOnReceiver"
+            android:name=".receiver.ScreenLockReceiver"
             android:enabled="true"
             android:exported="true" >
             <intent-filter>
