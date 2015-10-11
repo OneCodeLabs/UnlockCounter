@@ -2,7 +2,7 @@ package com.unlockchecker.unlockchecker.activity;
 
 import android.content.Intent;
 
-import com.unlockchecker.unlockchecker.service.LockService;
+import com.unlockchecker.unlockchecker.service.UnlockCounterService;
 import com.unlockchecker.unlockchecker.R;
 
 
@@ -15,7 +15,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        startService(new Intent(MainActivity.this, LockService.class));
+        startService(new Intent(MainActivity.this, UnlockCounterService.class));
     }
 
     @Override
