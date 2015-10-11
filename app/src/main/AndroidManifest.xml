@@ -18,7 +18,7 @@
         </activity>
 
         <service
-            android:name=".LockService"
+            android:name=".service.LockService"
             android:enabled="true"
             android:exported="true" >
         </service>

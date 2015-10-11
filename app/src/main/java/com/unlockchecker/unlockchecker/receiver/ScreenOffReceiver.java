@@ -1,9 +1,12 @@
-package com.unlockchecker.unlockchecker;
+package com.unlockchecker.unlockchecker.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import com.unlockchecker.unlockchecker.service.LockService;
+import com.unlockchecker.unlockchecker.helper.DBHelper;
 
 public class ScreenOffReceiver extends BroadcastReceiver {
 
