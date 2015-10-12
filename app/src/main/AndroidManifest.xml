@@ -27,7 +27,7 @@
         </service>
 
         <receiver
-            android:name=".receiver.ScreenLockReceiver"
+            android:name=".receiver.ScreenUnlockReceiver"
             android:enabled="true"
             android:exported="true" >
             <intent-filter>
@@ -37,6 +37,12 @@
         <receiver android:name=".receiver.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.RestartServiceReceiver" >
+            <intent-filter>
+                <action android:name="YouWillNeverKillMe" >
+                </action>
             </intent-filter>
         </receiver>
     </application>
