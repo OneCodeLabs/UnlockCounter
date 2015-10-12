@@ -1,11 +1,16 @@
 package com.unlockchecker.unlockchecker.model;
 
+import com.orm.SugarRecord;
+
 import java.io.Serializable;
 
-public class Session implements Serializable {
+public class Session extends SugarRecord<Session> implements Serializable {
 
     private long duration;
     private long startedAt;
+
+    public Session() {
+    }
 
     public Session(long duration, long startedAt) {
         this.duration = duration;

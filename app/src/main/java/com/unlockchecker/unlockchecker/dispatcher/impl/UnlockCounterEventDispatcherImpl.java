@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.unlockchecker.unlockchecker.db.UnlockCounterDB;
 import com.unlockchecker.unlockchecker.db.impl.SharedPreferencesDB;
+import com.unlockchecker.unlockchecker.db.impl.SugarDB;
 import com.unlockchecker.unlockchecker.dispatcher.UnlockCounterEventDispatcher;
 import com.unlockchecker.unlockchecker.model.Session;
 
@@ -13,7 +14,7 @@ public class UnlockCounterEventDispatcherImpl implements UnlockCounterEventDispa
     private UnlockCounterDB unlockCounterDB;
 
     public UnlockCounterEventDispatcherImpl(Context context) {
-        unlockCounterDB = new SharedPreferencesDB(context);
+        unlockCounterDB = new SugarDB(context);
     }
 
     @Override

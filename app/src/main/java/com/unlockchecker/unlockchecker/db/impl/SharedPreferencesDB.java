@@ -1,16 +1,14 @@
 package com.unlockchecker.unlockchecker.db.impl;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.unlockchecker.unlockchecker.Configuration;
 import com.unlockchecker.unlockchecker.db.UnlockCounterDB;
 import com.unlockchecker.unlockchecker.model.Session;
+import com.unlockchecker.unlockchecker.util.SharedPreferencesUtils;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -34,22 +32,17 @@ public class SharedPreferencesDB implements UnlockCounterDB {
         }
     }
 
-    public SharedPreferences getSettings() {
-        return mContext.getSharedPreferences(Configuration.SHARED_PREFERENCES,
-                Activity.MODE_PRIVATE);
-    }
-
-    private void storeSessions(List<Session> smokeInfo) {
+    private void storeSessions(List<Session> sessions) {
         Gson gson = new GsonBuilder().create();
-        getSettings()
+        SharedPreferencesUtils.getPreferences(mContext)
                 .edit()
-                .putString(SESSIONS_LIST, gson.toJson(smokeInfo))
+                .putString(SESSIONS_LIST, gson.toJson(sessions))
                 .apply();
     }
 
     @Override
     public void storeTimestamp(long timestamp) {
-        getSettings()
+        SharedPreferencesUtils.getPreferences(mContext)
                 .edit()
                 .putLong(TIMESTAMP, timestamp)
                 .apply();
@@ -57,7 +50,7 @@ public class SharedPreferencesDB implements UnlockCounterDB {
 
     @Override
     public long getTimestamp() {
-        return getSettings().getLong(TIMESTAMP, 0);
+        return SharedPreferencesUtils.getPreferences(mContext).getLong(TIMESTAMP, 0);
     }
 
     @Override
@@ -70,7 +63,8 @@ public class SharedPreferencesDB implements UnlockCounterDB {
 
     @Override
     public List<Session> getAllSessions() {
-        String sessionsJson = getSettings().getString(SESSIONS_LIST, null);
+        String sessionsJson = SharedPreferencesUtils.getPreferences(mContext)
+                .getString(SESSIONS_LIST, null);
         if (sessionsJson == null) return new ArrayList<Session>();
         Gson gson = new GsonBuilder().create();
         Type listType = new TypeToken<List<Session>>() {}.getType();
