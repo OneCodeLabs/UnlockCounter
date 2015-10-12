@@ -1,9 +1,10 @@
 package com.unlockchecker.unlockchecker;
 
-import android.app.Application;
 import android.content.Context;
 
-public class UnlockCounterApplication extends Application {
+import com.orm.SugarApp;
+
+public class UnlockCounterApplication extends SugarApp {
 
     private static Context sContext;
 
