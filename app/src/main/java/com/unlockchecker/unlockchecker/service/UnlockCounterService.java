@@ -10,7 +10,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.unlockchecker.unlockchecker.dispatcher.UnlockCounterEventDispatcher;
-import com.unlockchecker.unlockchecker.dispatcher.UnlockCounterEventDispatcherImpl;
+import com.unlockchecker.unlockchecker.dispatcher.impl.UnlockCounterEventDispatcherImpl;
 import com.unlockchecker.unlockchecker.receiver.ScreenOffReceiver;
 
 public class UnlockCounterService extends Service {
@@ -35,7 +35,7 @@ public class UnlockCounterService extends Service {
         mReceiver = new ScreenOffReceiver();
         registerReceiver(mReceiver, filter);
         unlockCounterEventDispatcher = new UnlockCounterEventDispatcherImpl(this);
-        unlockCounterEventDispatcher.onUnlock();
+        unlockCounterEventDispatcher.initialize();
         initialized = true;
         isUnlock = true;
         Log.i(TAG, "Started");
@@ -46,6 +46,7 @@ public class UnlockCounterService extends Service {
         unregisterReceiver(mReceiver);
         Log.i(TAG, "onDestoy()");
         super.onDestroy();
+        sendBroadcast(new Intent("YouWillNeverKillMe"));
     }
 
     @Override

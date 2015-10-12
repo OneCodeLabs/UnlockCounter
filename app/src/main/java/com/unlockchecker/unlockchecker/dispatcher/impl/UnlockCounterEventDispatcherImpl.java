@@ -1,9 +1,11 @@
-package com.unlockchecker.unlockchecker.dispatcher;
+package com.unlockchecker.unlockchecker.dispatcher.impl;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.unlockchecker.unlockchecker.db.UnlockCounterDB;
-import com.unlockchecker.unlockchecker.db.SharedPreferencesDB;
+import com.unlockchecker.unlockchecker.db.impl.SharedPreferencesDB;
+import com.unlockchecker.unlockchecker.dispatcher.UnlockCounterEventDispatcher;
 import com.unlockchecker.unlockchecker.model.Session;
 
 public class UnlockCounterEventDispatcherImpl implements UnlockCounterEventDispatcher {
@@ -16,6 +18,11 @@ public class UnlockCounterEventDispatcherImpl implements UnlockCounterEventDispa
 
     @Override
     public void onUnlock() {
+        if (unlockCounterDB.getTimestamp() != 0) Log.w(SharedPreferencesDB.TAG, "session lost");
+        unlockCounterDB.storeTimestamp(System.currentTimeMillis());
+    }
+
+    public void initialize() {
         if (unlockCounterDB.getTimestamp() != 0) return;
         unlockCounterDB.storeTimestamp(System.currentTimeMillis());
     }
