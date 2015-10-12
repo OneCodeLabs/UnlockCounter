@@ -20,10 +20,7 @@ public class SharedPreferencesDB implements UnlockCounterDB {
     public static final String SESSIONS_LIST = "SESSIONS_LIST";
     public static final String TIMESTAMP = "TIMESTAMP";
 
-    private Context mContext;
-
-    public SharedPreferencesDB(Context context) {
-        this.mContext = context;
+    public SharedPreferencesDB() {
     }
 
     public void logAllSessions() {
@@ -34,23 +31,17 @@ public class SharedPreferencesDB implements UnlockCounterDB {
 
     private void storeSessions(List<Session> sessions) {
         Gson gson = new GsonBuilder().create();
-        SharedPreferencesUtils.getPreferences(mContext)
-                .edit()
-                .putString(SESSIONS_LIST, gson.toJson(sessions))
-                .apply();
+        SharedPreferencesUtils.save(SESSIONS_LIST, gson.toJson(sessions));
     }
 
     @Override
     public void storeTimestamp(long timestamp) {
-        SharedPreferencesUtils.getPreferences(mContext)
-                .edit()
-                .putLong(TIMESTAMP, timestamp)
-                .apply();
+        SharedPreferencesUtils.save(TIMESTAMP, timestamp);
     }
 
     @Override
     public long getTimestamp() {
-        return SharedPreferencesUtils.getPreferences(mContext).getLong(TIMESTAMP, 0);
+        return SharedPreferencesUtils.getLong(TIMESTAMP);
     }
 
     @Override
@@ -63,8 +54,7 @@ public class SharedPreferencesDB implements UnlockCounterDB {
 
     @Override
     public List<Session> getAllSessions() {
-        String sessionsJson = SharedPreferencesUtils.getPreferences(mContext)
-                .getString(SESSIONS_LIST, null);
+        String sessionsJson = SharedPreferencesUtils.getString(SESSIONS_LIST);
         if (sessionsJson == null) return new ArrayList<Session>();
         Gson gson = new GsonBuilder().create();
         Type listType = new TypeToken<List<Session>>() {}.getType();

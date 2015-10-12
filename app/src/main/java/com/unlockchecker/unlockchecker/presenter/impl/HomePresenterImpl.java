@@ -20,4 +20,9 @@ public class HomePresenterImpl implements HomePresenter {
     public void onSettingsPressed() {
         homeView.navigateToSettings();
     }
+
+    @Override
+    public void populate() {
+
+    }
 }

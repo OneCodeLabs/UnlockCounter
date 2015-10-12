@@ -34,8 +34,7 @@ public class UnlockCounterService extends Service {
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
         mReceiver = new ScreenOffReceiver();
         registerReceiver(mReceiver, filter);
-        unlockCounterEventDispatcher = new UnlockCounterEventDispatcherImpl(this);
-        unlockCounterEventDispatcher.initialize();
+        unlockCounterEventDispatcher = new UnlockCounterEventDispatcherImpl();
         initialized = true;
         isUnlock = true;
         Log.i(TAG, "Started");

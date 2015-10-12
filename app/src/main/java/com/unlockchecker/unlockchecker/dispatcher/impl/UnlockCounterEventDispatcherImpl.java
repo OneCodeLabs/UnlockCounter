@@ -1,6 +1,5 @@
 package com.unlockchecker.unlockchecker.dispatcher.impl;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.unlockchecker.unlockchecker.db.UnlockCounterDB;
@@ -13,8 +12,9 @@ public class UnlockCounterEventDispatcherImpl implements UnlockCounterEventDispa
 
     private UnlockCounterDB unlockCounterDB;
 
-    public UnlockCounterEventDispatcherImpl(Context context) {
-        unlockCounterDB = new SugarDB(context);
+    public UnlockCounterEventDispatcherImpl() {
+        unlockCounterDB = new SugarDB();
+        initialize();
     }
 
     @Override
