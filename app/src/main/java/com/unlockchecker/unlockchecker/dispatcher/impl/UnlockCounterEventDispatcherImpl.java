@@ -7,6 +7,9 @@ import com.unlockchecker.unlockchecker.db.impl.SharedPreferencesDB;
 import com.unlockchecker.unlockchecker.db.impl.SugarDB;
 import com.unlockchecker.unlockchecker.dispatcher.UnlockCounterEventDispatcher;
 import com.unlockchecker.unlockchecker.model.Session;
+import com.unlockchecker.unlockchecker.model.event.UsageDataUpdateEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class UnlockCounterEventDispatcherImpl implements UnlockCounterEventDispatcher {
 
@@ -36,5 +39,6 @@ public class UnlockCounterEventDispatcherImpl implements UnlockCounterEventDispa
         long duration = System.currentTimeMillis() - timestamp;
         Session session = new Session(duration, timestamp);
         unlockCounterDB.onSessionCompleted(session);
+        EventBus.getDefault().post(new UsageDataUpdateEvent());
     }
 }

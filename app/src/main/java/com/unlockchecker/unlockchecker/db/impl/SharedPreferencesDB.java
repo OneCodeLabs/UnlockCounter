@@ -1,6 +1,5 @@
 package com.unlockchecker.unlockchecker.db.impl;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -61,4 +60,27 @@ public class SharedPreferencesDB implements UnlockCounterDB {
         List<Session> sessions = gson.fromJson(sessionsJson, listType);
         return sessions;
     }
+
+    @Override
+    public double getAverageDuration(int days) {
+        // TODO(gnardini): Implement or delete class.
+        return 0;
+    }
+
+    @Override
+    public Integer[] getSessionsCountByDay(int days) {
+        // TODO(gnardini): Implement or delete class.
+        return new Integer[0];
+    }
+
+    @Override
+    public void onDayChanged() {
+        // TODO(gnardini): Implement or delete class.
+    }
+
+    @Override
+    public void checkDayChange() {
+        // TODO(gnardini): Implement or delete class.
+    }
+
 }
