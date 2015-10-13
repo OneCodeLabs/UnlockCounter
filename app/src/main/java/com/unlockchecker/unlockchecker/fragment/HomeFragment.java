@@ -1,9 +1,5 @@
 package com.unlockchecker.unlockchecker.fragment;
 
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-
 import com.unlockchecker.unlockchecker.R;
 import com.unlockchecker.unlockchecker.activity.SettingsActivity;
 import com.unlockchecker.unlockchecker.activity.StatisticsActivity;
@@ -12,7 +8,6 @@ import com.unlockchecker.unlockchecker.presenter.impl.HomePresenterImpl;
 import com.unlockchecker.unlockchecker.util.NavigationUtils;
 import com.unlockchecker.unlockchecker.view.HomeView;
 
-import butterknife.Bind;
 import butterknife.OnClick;
 
 
@@ -29,6 +24,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     protected int layout() {
         return R.layout.fragment_home;
     }
+
     @Override
     protected void init() {
         homePresenter = new HomePresenterImpl(this);

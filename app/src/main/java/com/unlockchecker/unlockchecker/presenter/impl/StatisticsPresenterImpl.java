@@ -10,4 +10,9 @@ public class StatisticsPresenterImpl implements StatisticsPresenter {
     public StatisticsPresenterImpl(StatisticsView statisticsView) {
         this.statisticsView = statisticsView;
     }
+
+    @Override
+    public void populate() {
+
+    }
 }

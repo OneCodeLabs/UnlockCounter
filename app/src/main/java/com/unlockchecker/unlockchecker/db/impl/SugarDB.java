@@ -1,6 +1,5 @@
 package com.unlockchecker.unlockchecker.db.impl;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.unlockchecker.unlockchecker.db.UnlockCounterDB;
@@ -13,21 +12,15 @@ public class SugarDB implements UnlockCounterDB {
 
     public static final String TIMESTAMP = "TIMESTAMP";
 
-    private Context mContext;
-
-    public SugarDB(Context context) {
-        mContext = context;
+    public SugarDB() {
     }
 
     public void storeTimestamp(long timestamp) {
-        SharedPreferencesUtils.getPreferences(mContext)
-                .edit()
-                .putLong(TIMESTAMP, timestamp)
-                .apply();
+        SharedPreferencesUtils.save(TIMESTAMP, timestamp);
     }
 
     public long getTimestamp() {
-        return SharedPreferencesUtils.getPreferences(mContext).getLong(TIMESTAMP, 0);
+        return SharedPreferencesUtils.getLong(TIMESTAMP);
     }
 
     public void onSessionCompleted(Session session) {
