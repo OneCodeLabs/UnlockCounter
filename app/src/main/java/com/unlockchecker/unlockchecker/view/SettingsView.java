@@ -1,7 +1,8 @@
 package com.unlockchecker.unlockchecker.view;
 
-public interface SettingsView extends BaseView {
-    public void setDailySwitch(boolean value);
-    public void setWeeklySwitch(boolean value);
-    public void setMonthlySwitch(boolean value);
+public interface SettingsView {
+
+    void setDailySwitch(boolean value);
+    void setWeeklySwitch(boolean value);
+    void setMonthlySwitch(boolean value);
 }

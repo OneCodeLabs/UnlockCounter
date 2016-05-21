@@ -4,7 +4,7 @@ import com.orm.SugarRecord;
 
 import java.io.Serializable;
 
-public class Session extends SugarRecord<Session> implements Serializable {
+public class Session extends SugarRecord implements Serializable {
 
     private long duration;
     private long startedAt;

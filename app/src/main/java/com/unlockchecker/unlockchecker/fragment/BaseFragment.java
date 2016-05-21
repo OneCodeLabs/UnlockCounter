@@ -34,4 +34,5 @@ public abstract class BaseFragment extends Fragment {
      * Populates the view elements of the fragment
      */
     protected abstract void populate();
+
 }
