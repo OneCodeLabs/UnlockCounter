@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import com.unlockchecker.unlockchecker.R;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 /**
  * Used with {@link BarChart}. See that class for details.
  */
@@ -19,14 +16,9 @@ public class Bar extends LinearLayout {
 
     private static final int MAX_AMOUNT = 20;
 
-    @Bind(R.id.bar_background)
-    View mBackground;
-
-    @Bind(R.id.bar_foreground)
-    View mForeGround;
-
-    @Bind(R.id.bar_smokes)
-    TextView mCount;
+    private View mBackground;
+    private View mForeGround;
+    private TextView mCount;
 
     private float mWeight;
 
@@ -49,7 +41,9 @@ public class Bar extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.bar, this);
-        ButterKnife.bind(this, view);
+        mBackground = view.findViewById(R.id.bar_background);
+        mForeGround = view.findViewById(R.id.bar_foreground);
+        mCount = (TextView) view.findViewById(R.id.bar_value);
         setOrientation(VERTICAL);
     }
 

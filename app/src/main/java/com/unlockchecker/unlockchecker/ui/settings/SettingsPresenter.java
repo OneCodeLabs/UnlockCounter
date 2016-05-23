@@ -1,26 +1,25 @@
-package com.unlockchecker.unlockchecker.presenter.impl;
+package com.unlockchecker.unlockchecker.ui.settings;
 
-import com.unlockchecker.unlockchecker.presenter.SettingsPresenter;
+import com.unlockchecker.unlockchecker.ui.base.BasePresenter;
 import com.unlockchecker.unlockchecker.util.SharedPreferencesUtils;
-import com.unlockchecker.unlockchecker.view.SettingsView;
 
-public class SettingsPresenterImpl implements SettingsPresenter {
+public class SettingsPresenter
+        extends BasePresenter<SettingsContract.View>
+        implements SettingsContract.Presenter {
 
     private static final String SWITCH_STATE_DAILY = "SWITCH_STATE_DAILY";
     private static final String SWITCH_STATE_WEEKLY = "SWITCH_STATE_WEEKLY";
     private static final String SWITCH_STATE_MONTHLY = "SWITCH_STATE_MONTHLY";
 
-    private SettingsView settingsView;
-
-    public SettingsPresenterImpl(SettingsView settingsView) {
-        this.settingsView = settingsView;
+    public SettingsPresenter(SettingsContract.View settingsView) {
+        super(settingsView);
+        populate();
     }
 
-    @Override
-    public void populate() {
-        settingsView.setDailySwitch(SharedPreferencesUtils.getBoolean(SWITCH_STATE_DAILY));
-        settingsView.setWeeklySwitch(SharedPreferencesUtils.getBoolean(SWITCH_STATE_WEEKLY));
-        settingsView.setMonthlySwitch(SharedPreferencesUtils.getBoolean(SWITCH_STATE_MONTHLY));
+    private void populate() {
+        getView().setDailySwitch(SharedPreferencesUtils.getBoolean(SWITCH_STATE_DAILY));
+        getView().setWeeklySwitch(SharedPreferencesUtils.getBoolean(SWITCH_STATE_WEEKLY));
+        getView().setMonthlySwitch(SharedPreferencesUtils.getBoolean(SWITCH_STATE_MONTHLY));
     }
 
     @Override
@@ -37,4 +36,5 @@ public class SettingsPresenterImpl implements SettingsPresenter {
     public void onMonthlySwitchChecked(boolean checked) {
         SharedPreferencesUtils.save(SWITCH_STATE_MONTHLY, checked);
     }
+
 }

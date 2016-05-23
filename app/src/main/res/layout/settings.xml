@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <Switch
+        android:id="@+id/settings_daily_switch"
+        android:text="Daily report"
+        android:layout_marginTop="@dimen/default_small_margin"
+        style="@style/SettingsSwitch"
+        />
+
+    <Switch
+        android:id="@+id/settings_weekly_switch"
+        android:text="Weekly report"
+        style="@style/SettingsSwitch"
+
+        />
+
+    <Switch
+        android:id="@+id/settings_monthly_switch"
+        android:text="Monthly report"
+        style="@style/SettingsSwitch"
+        />
+
+</LinearLayout>
